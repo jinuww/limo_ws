@@ -1,0 +1,35 @@
+<root main_tree_to_execute="MainTree">
+  <BehaviorTree ID="MainTree">
+    
+    <Sequence name="Main Sequence">
+
+      <ReactiveFallback name="Search Phase Check">
+        <IsTargetDetected name="Target Detect?"/>
+        <Sequence name="Sequence(patrol)">
+          <SetNextPoint name="Set Way Point"/>
+          <MoveToPoint name="Move"/>
+        </Sequence>
+      </ReactiveFallback>
+
+      <ReactiveFallback name="Approach Phase Check">
+        <IsTargetClose name="Target Close?"/>
+        <Sequence name="Sequence(commander)">
+           <ApproachToTarget name="Approach"/>
+        </Sequence>
+      </ReactiveFallback>
+
+      <ReactiveFallback name="Evacuation Phase Check">
+        <AtExit name="At Exit?"/>
+        
+        <Sequence name="Sequence(commander)">
+           <MakeRescueVoice name="Voice"/>
+           
+           <Wait name="Wait 2s" duration="2.0"/>
+           
+           <NavigateToExit name="Move To Exit"/>
+        </Sequence>
+      </ReactiveFallback>
+
+    </Sequence>
+  </BehaviorTree>
+</root>

@@ -1,0 +1,77 @@
+scenario: scenarios.limo_rescue
+
+agent:
+  behavior_tree_xml: default_bt.xml
+  namespaces: ""
+
+bt_runner:
+  bt_tick_rate: 10
+  profiling_mode: false  
+  bt_visualiser:
+    enabled: true
+    direction: Vertical
+    screen_height: 800
+    screen_width: 1000
+
+blackboard:
+  patrol_points:
+    # 1번 지점
+    - header:
+        frame_id: "map"
+      pose:
+        position:
+          x: -4.543159108756567
+          y: 1.9684190363400278
+          z: 0.0
+        orientation:
+          z: -0.002853376443561271
+          w: 0.9999959291131496
+
+    # 2번 지점
+    - header:
+        frame_id: "map"
+      pose:
+        position:
+          x: 4.237028807966699
+          y: 1.8159906861631818
+          z: 0.0
+        orientation:
+          z: -0.7040455144334999
+          w: 0.710154851849981
+
+    # 3번 지점
+    - header:
+        frame_id: "map"
+      pose:
+        position:
+          x: 4.220588772104924
+          y: -2.6841175886040385
+          z: 0.0
+        orientation:
+          z: 0.9985175549649522
+          w: 0.05443062030524414
+
+    # 4번 지점 (오타 수정됨)
+    - header:
+        frame_id: "map"
+      pose:
+        position:
+          x: -4.858955077225655
+          y: -2.2941261865355562
+          z: 0.0
+        orientation:
+          z: 0.6355675672533048
+          w: 0.7720452496167021
+
+  # 2. 비상구 위치 (최종 목적지)
+  exit_pose:
+    header:
+      frame_id: "map"
+    pose:
+      position:
+        x: 2.3951365808840444
+        y: -0.9221786553149875
+        z: 0.0
+      orientation:
+        z: 0.13202189472383274
+        w: 0.9912468004051913
